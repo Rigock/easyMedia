@@ -7,8 +7,7 @@ CREATE TABLE state(
     title VARCHAR(30),
     message VARCHAR(300),
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    author VARCHAR(100),
-    description VARCHAR(250)
+    author VARCHAR(100)
 );
 
 CREATE TABLE user(
