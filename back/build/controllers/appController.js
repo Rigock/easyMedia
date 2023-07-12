@@ -1,16 +1,23 @@
 "use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.appController = void 0;
-var database_1 = __importDefault(require("../database"));
 var AppController = /** @class */ (function () {
     function AppController() {
     }
-    AppController.prototype.index = function (req, res) {
-        database_1.default.get('query');
-        res.send('Desde la app');
+    AppController.prototype.list = function (req, res) {
+        res.json({ text: 'Showing posts' });
+    };
+    AppController.prototype.getOne = function (req, res) {
+        res.json({ text: 'Showing post: ' + req.params.id });
+    };
+    AppController.prototype.create = function (req, res) {
+        res.json({ text: 'Creating a post' });
+    };
+    AppController.prototype.update = function (req, res) {
+        res.json({ text: 'Updating post: ' + req.params.id });
+    };
+    AppController.prototype.delete = function (req, res) {
+        res.json({ text: 'Deleting post: ' + req.params.id });
     };
     return AppController;
 }());
