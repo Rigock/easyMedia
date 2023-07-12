@@ -10,7 +10,11 @@ class AppRoutes {
     }
 
     config(): void {
-        this.router.get('/', appController.index);
+        this.router.get('/', appController.list);
+        this.router.get('/:id', appController.getOne);
+        this.router.post('/', appController.create);
+        this.router.put('/:id', appController.update);
+        this.router.delete('/:id', appController.delete);
     }
 
 }

@@ -1,7 +1,9 @@
 import mysql from 'promise-mysql';
 import  keys from './keys';
 
-const pool = mysql.createPool(keys.database);
+// var mysql = require('mysql');
+
+ const pool = mysql.createPool(keys.database);
 
 // pool.getConnection()
 //     .then(connection => {
@@ -11,6 +13,12 @@ const pool = mysql.createPool(keys.database);
 pool.then( poolConnection => {
     poolConnection.release;
     console.log('DB is connected');
-})
+});
+
+
+// pool.get<keyof mysql.Pool>((key: keyof mysql.Pool): poolConnection => {
+//     poolConnection.release;
+//     console.log('DB is connected 2');
+// });
 
 export default pool;

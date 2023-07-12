@@ -3,10 +3,48 @@ import pool from '../database';
 
 class AppController {
    
-    public index (req: Request, res: Response) {
-        pool.get('query')
-        res.send('Desde la app')
-    }    
+    public async list (req: Request, res: Response) {
+        const posts = await pool.then(poolGet => {
+           return poolGet.query('SELECT * FROM `state`')
+            .then(resp => resp);
+        });
+        res.json(posts);
+    }
+   
+    public async getOne (req: Request, res: Response): Promise<any> {
+        const {id} = req.params;
+         const specificPost = await pool.then( poolGetOne  => {
+           return poolGetOne.query('SELECT * FROM state WHERE id = ?', [id])
+            .then(resp  => resp); 
+        }); 
+        if (specificPost.length > 0){
+            return res.json(specificPost[0]);
+        }
+        res.status(404).json({text: 'Post does not exist'});
+    }
+
+    public async create(req: Request, res: Response): Promise<void>{
+        await pool.then( poolConnection => {
+            poolConnection.query('INSERT INTO state set ?', [req.body])
+        });
+        res.json({text: 'Post created'});
+    }
+    
+    public async update(req: Request, res: Response): Promise<void>{
+        const {id} = req.params;
+        await pool.then( poolConnection => {
+            poolConnection.query('UPDATE state set ? WHERE id = ?', [req.body, id]);
+        });
+        res.json({text: 'Updating post: '+ req.params.id});
+    }
+
+    public async delete(req: Request, res: Response): Promise<void>{
+        const {id} = req.params;
+        await pool.then( poolConnection => {
+            poolConnection.query('DELETE FROM state WHERE id = ?', [id]);
+        });
+        res.json({text: 'Post deleted'});
+    }
 
 }
 
