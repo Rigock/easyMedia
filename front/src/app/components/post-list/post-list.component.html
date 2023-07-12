@@ -1,0 +1,11 @@
+
+<div class="card border-info mb-3" *ngFor="let publication of publications"  style="max-width: 20rem;">
+    <div class="card-header mb-0">{{publication.title}}</div>
+    <div class="card-body d-flex flex-column mt-0 py-1 px-2">
+        <p class="card-text">{{publication.message}}</p>
+        <div class="justify-content-between d-flex">
+             <small> {{publication.created_at | date}} </small>
+            <small> {{publication?.author}} </small>
+        </div>
+    </div>
+</div>
