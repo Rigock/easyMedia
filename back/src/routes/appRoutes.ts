@@ -1,4 +1,5 @@
 import { Router } from "express";
+import {appController} from "../controllers/appController"
 
 class AppRoutes {
 
@@ -9,7 +10,7 @@ class AppRoutes {
     }
 
     config(): void {
-        this.router.get('/', (req, resp) => resp.send('DesdeLaApp'));
+        this.router.get('/', appController.index);
     }
 
 }
