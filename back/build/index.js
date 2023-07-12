@@ -6,8 +6,11 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var express_1 = __importDefault(require("express"));
 var morgan_1 = __importDefault(require("morgan"));
 var cors_1 = __importDefault(require("cors"));
+var passport_1 = __importDefault(require("passport"));
 var indexRoutes_1 = __importDefault(require("./routes/indexRoutes"));
 var appRoutes_1 = __importDefault(require("./routes/appRoutes"));
+var authRoutes_1 = __importDefault(require("./routes/authRoutes"));
+require('./lib/passport');
 var Server = /** @class */ (function () {
     function Server() {
         this.app = express_1.default();
@@ -20,10 +23,16 @@ var Server = /** @class */ (function () {
         this.app.use(cors_1.default());
         this.app.use(express_1.default.json());
         this.app.use(express_1.default.urlencoded({ extended: false }));
+        this.app.use(passport_1.default.initialize());
+        this.app.use(passport_1.default.session());
+        this.app.use(function (req, res, next) {
+            next();
+        });
     };
     Server.prototype.routes = function () {
         this.app.use('/', indexRoutes_1.default);
         this.app.use('/api/easyMedia', appRoutes_1.default);
+        this.app.use('/signup', authRoutes_1.default);
     };
     Server.prototype.start = function () {
         var _this = this;

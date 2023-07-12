@@ -1,10 +1,12 @@
 import express, {Application} from 'express';
 import morgan from 'morgan';
 import cors from 'cors';
-
+import passport from 'passport';
 import indexRoutes from './routes/indexRoutes';
 import appRoutes from './routes/appRoutes';
+import authRoutes from './routes/authRoutes';
 
+require('./lib/passport');
 
 class Server {
 
@@ -22,11 +24,18 @@ class Server {
         this.app.use(cors());
         this.app.use(express.json());
         this.app.use(express.urlencoded({extended: false}));
+        this.app.use(passport.initialize());
+        this.app.use(passport.session());
+        
+        this.app.use((req, res, next) => {
+            next();
+        });
     }
 
     routes(): void {
         this.app.use('/',indexRoutes);
         this.app.use('/api/easyMedia',appRoutes);
+        this.app.use('/signup',authRoutes);
     }
 
     start(): void {

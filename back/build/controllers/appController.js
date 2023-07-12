@@ -50,7 +50,7 @@ var AppController = /** @class */ (function () {
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0: return [4 /*yield*/, database_1.default.then(function (poolGet) {
-                            return poolGet.query('SELECT * FROM `state`')
+                            return poolGet.query('SELECT * FROM `states`')
                                 .then(function (resp) { return resp; });
                         })];
                     case 1:
@@ -69,7 +69,7 @@ var AppController = /** @class */ (function () {
                     case 0:
                         id = req.params.id;
                         return [4 /*yield*/, database_1.default.then(function (poolGetOne) {
-                                return poolGetOne.query('SELECT * FROM state WHERE id = ?', [id])
+                                return poolGetOne.query('SELECT * FROM states WHERE id = ?', [id])
                                     .then(function (resp) { return resp; });
                             })];
                     case 1:
@@ -88,7 +88,7 @@ var AppController = /** @class */ (function () {
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0: return [4 /*yield*/, database_1.default.then(function (poolConnection) {
-                            poolConnection.query('INSERT INTO state set ?', [req.body]);
+                            poolConnection.query('INSERT INTO states set ?', [req.body]);
                         })];
                     case 1:
                         _a.sent();
@@ -106,7 +106,7 @@ var AppController = /** @class */ (function () {
                     case 0:
                         id = req.params.id;
                         return [4 /*yield*/, database_1.default.then(function (poolConnection) {
-                                poolConnection.query('UPDATE state set ? WHERE id = ?', [req.body, id]);
+                                poolConnection.query('UPDATE states set ? WHERE id = ?', [req.body, id]);
                             })];
                     case 1:
                         _a.sent();
@@ -124,7 +124,7 @@ var AppController = /** @class */ (function () {
                     case 0:
                         id = req.params.id;
                         return [4 /*yield*/, database_1.default.then(function (poolConnection) {
-                                poolConnection.query('DELETE FROM state WHERE id = ?', [id]);
+                                poolConnection.query('DELETE FROM states WHERE id = ?', [id]);
                             })];
                     case 1:
                         _a.sent();
