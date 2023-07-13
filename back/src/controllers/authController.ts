@@ -6,12 +6,10 @@ import passport from 'passport';
 class AuthController {
 
     public profile (req: Request, res: Response){
-        console.log('Desde el PROFILE');
         res.json({text: 'Desde el PROFILE '})
     }
 
     public signUp (req: Request, res: Response){
-        console.log('Desde el signUp');
         res.json({text: 'Desde el SIGN UP '})
     }
 

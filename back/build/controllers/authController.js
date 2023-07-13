@@ -46,11 +46,9 @@ var AuthController = /** @class */ (function () {
     function AuthController() {
     }
     AuthController.prototype.profile = function (req, res) {
-        console.log('Desde el PROFILE');
         res.json({ text: 'Desde el PROFILE ' });
     };
     AuthController.prototype.signUp = function (req, res) {
-        console.log('Desde el signUp');
         res.json({ text: 'Desde el SIGN UP ' });
     };
     AuthController.prototype.getUser = function (req, res) {
