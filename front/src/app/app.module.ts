@@ -9,6 +9,8 @@ import { NavigationComponent } from './components/navigation/navigation.componen
 import { PostFormComponent } from './components/post-form/post-form.component';
 import { PostListComponent } from './components/post-list/post-list.component';
 import { PostsService } from "./services/posts.service";
+import { SignUpComponent } from './components/sign-up/sign-up.component';
+import { SignInComponent } from './components/sign-in/sign-in.component';
 
 
 @NgModule({
@@ -16,7 +18,9 @@ import { PostsService } from "./services/posts.service";
     AppComponent,
     NavigationComponent,
     PostFormComponent,
-    PostListComponent
+    PostListComponent,
+    SignUpComponent,
+    SignInComponent
   ],
   imports: [
     BrowserModule,
