@@ -4,4 +4,5 @@ export interface Post {
     message?: string;
     author?: string;
     created_at?: Date;
+    user_id?: number;
 }
