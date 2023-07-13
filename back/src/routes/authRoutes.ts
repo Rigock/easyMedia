@@ -12,13 +12,13 @@ class AuthRoutes {
     }
 
     config(): void {
-        this.router.get('/', atuhController.signUp);
-        // this.router.post('/', atuhController.postSignUp);
-        this.router.post('/', passport.authenticate('local.signup', {
-            successRedirect: '/profile',
-            failureRedirect: '/signup',
-            failureFlash: true
-        }));
+        this.router.get('/:email', atuhController.getUser);
+        this.router.post('/', atuhController.createUser);
+        // this.router.post('/', passport.authenticate('local.signup', {
+        //     successRedirect: '/profile',
+        //     failureRedirect: '/signup',
+        //     failureFlash: true
+        // }));
 
         this.router.get('/profile', atuhController.profile);
     }

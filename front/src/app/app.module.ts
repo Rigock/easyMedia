@@ -9,6 +9,7 @@ import { NavigationComponent } from './components/navigation/navigation.componen
 import { PostFormComponent } from './components/post-form/post-form.component';
 import { PostListComponent } from './components/post-list/post-list.component';
 import { PostsService } from "./services/posts.service";
+import { UsersService } from './services/users.service';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { SignInComponent } from './components/sign-in/sign-in.component';
 
@@ -29,7 +30,8 @@ import { SignInComponent } from './components/sign-in/sign-in.component';
     FormsModule,
   ],
   providers: [
-    PostsService
+    PostsService,
+    UsersService
   ],
   bootstrap: [AppComponent]
 })
